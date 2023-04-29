@@ -28,7 +28,7 @@ DATABASES = DATABASES
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*", "sixtar-archive.kr"]
+ALLOWED_HOSTS = ["api.sixtar-archive.kr"]
 
 
 # Application definition

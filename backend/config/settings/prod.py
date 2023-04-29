@@ -1,3 +1,3 @@
 from .base import *
 
-ALLOWED_HOSTS = ['sixtar-archive.kr']
+ALLOWED_HOSTS = ['api.sixtar-archive.kr']
