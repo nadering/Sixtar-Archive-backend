@@ -102,7 +102,10 @@ class PatternHistory(models.Model):
     class Meta:
         managed = False
         db_table = 'pattern_history'
-        unique_together = (('music_id', 'revision'),)
+        constraints = [
+            models.UniqueConstraint(
+                fields=['music_id', 'revision'], name='history-constraint'),
+            ]
     
     def __str__(self):
         return f'Music_id {self.music_id} - History #{self.revision}'
