@@ -35,6 +35,9 @@ class PatternInfoSerializer(serializers.Serializer):
   musicPackName = serializers.CharField(source='music_pack_name')
   musicPackId   = serializers.IntegerField(source='music_pack_id')
   type          = serializers.CharField()
+  bpm           = serializers.CharField()
+  bpmMin        = serializers.CharField(source='bpm_min')
+  bpmMax        = serializers.CharField(source='bpm_max')
 
 
 class FloorSerializer(serializers.Serializer):

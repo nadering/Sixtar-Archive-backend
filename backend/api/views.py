@@ -81,7 +81,8 @@ class BoardAPI(APIView):
     max_diff = -1
     pattern_count = 0
     for diff_type, patterns in query_result.items():
-      # pattern: 패턴 {music_id, difficulty, floor, name, composer, dlc_id, dlc_name, music_pack_id, music_pack_name}
+      # pattern: 패턴
+      # {music_id, difficulty, floor, name, composer, dlc_id, dlc_name, music_pack_id, music_pack_name, bpm, bpm_min, bpm_max}
       for pattern in patterns:
         pattern_count += 1
         
@@ -189,11 +190,12 @@ class BoardAPI(APIView):
         (Q(difficulty__gte=min_num) & Q(difficulty__lte=max_num)) |
         (Q(floor__gte=min_num) & Q(floor__lt=max_num+1))
       ).annotate(
-        name=F('music__name'), composer=F('music__composer')
+        name=F('music__name'), composer=F('music__composer'),
+        bpm=F('music__bpm'), bpm_min=F('music__bpm_min'), bpm_max=F('music__bpm_max'),
       ).order_by(
         '-difficulty', '-floor', 'name'
       ).values(
-        'music_id', 'difficulty', 'floor', 'name', 'composer'
+        'music_id', 'difficulty', 'floor', 'name', 'composer', 'bpm', 'bpm_min', 'bpm_max'
       )
     
     return list(query_result)
