@@ -212,11 +212,12 @@ class BoardAPI(APIView):
       ).filter(
         difficulty__isnull=False
       ).annotate(
-        name=F('music__name'), composer=F('music__composer')
+        name=F('music__name'), composer=F('music__composer'),
+        bpm=F('music__bpm'), bpm_min=F('music__bpm_min'), bpm_max=F('music__bpm_max'),
       ).order_by(
         '-difficulty', '-floor', 'name'
       ).values(
-        'music_id', 'difficulty', 'floor', 'name', 'composer'
+        'music_id', 'difficulty', 'floor', 'name', 'composer', 'bpm', 'bpm_min', 'bpm_max'
       )
       
     return list(query_result)
