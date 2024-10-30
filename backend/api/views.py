@@ -9,8 +9,8 @@ from rest_framework import exceptions
 
 import copy
 
-from api.models import Music, Dlc, MusicPack, Pattern, PatternHistory
-from api.serializers import MusicSerializer, DlcSerializer, MusicPackSerializer, PatternSerializer, BoardSerializer, PatternHistorySerializer
+from api.models import Music, Dlc, MusicPack, Pattern, PatternHistory, Vote
+from api.serializers import MusicSerializer, DlcSerializer, MusicPackSerializer, PatternSerializer, BoardSerializer, PatternHistorySerializer, VoteSerializer
 
 
 class MusicListAPI(APIView):
@@ -271,4 +271,11 @@ class PatternHistoryListAPI(APIView):
   def get(self, request):
     queryset = PatternHistory.objects.all()
     serializer = PatternHistorySerializer(queryset, many=True)
+    return Response(serializer.data)
+
+
+class VoteListAPI(APIView):
+  def get(self, request):
+    queryset = Vote.objects.all()
+    serializer = VoteSerializer(queryset, many=True)
     return Response(serializer.data)

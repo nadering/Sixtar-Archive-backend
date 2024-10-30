@@ -1,6 +1,6 @@
 from django.urls import path
 
-from api.views import MusicListAPI, DlcListAPI, MusicPackListAPI, PatternListAPI, BoardAPI, PatternHistoryListAPI
+from api.views import MusicListAPI, DlcListAPI, MusicPackListAPI, PatternListAPI, BoardAPI, PatternHistoryListAPI, VoteListAPI
 
 
 urlpatterns = [
@@ -10,4 +10,5 @@ urlpatterns = [
     path('pattern', PatternListAPI.as_view()),
     path('board', BoardAPI.as_view()),
     path('pattern-history', PatternHistoryListAPI.as_view()),
+    path('vote', VoteListAPI.as_view()),
 ]

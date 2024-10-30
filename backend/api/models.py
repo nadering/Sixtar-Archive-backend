@@ -112,3 +112,19 @@ class PatternHistory(models.Model):
     
     def __str__(self):
         return f'Music_id {self.music_id} - History #{self.revision}'
+
+
+class Vote(models.Model):
+    title = models.CharField(max_length=100)
+    context = models.CharField(max_length=200, blank=True, null=True)
+    solar_link = models.CharField(max_length=200)
+    lunar_link = models.CharField(max_length=200)
+    deadline = models.DateField()
+    created_time = models.DateField(auto_now_add=True)
+
+    class Meta:
+        managed = False
+        db_table = 'vote'
+
+    def __str__(self):
+        return f'Vote {self.id} - {self.title}'

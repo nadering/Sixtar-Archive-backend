@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Music, Dlc, MusicPack, Pattern, PatternHistory
+from .models import Music, Dlc, MusicPack, Pattern, PatternHistory, Vote
 
 
 # Register your models here.
@@ -28,9 +28,13 @@ class PatternAdmin(admin.ModelAdmin):
 class PatternHistoryAdmin(BaseReadOnlyAdminMixin, admin.ModelAdmin):
     search_fields = ['=music_id']
 
+class VoteAdmin(admin.ModelAdmin):
+    search_fields = ['id']
+
 
 admin.site.register(Music, MusicAdmin)
 admin.site.register(Dlc, DlcAdmin)
 admin.site.register(MusicPack, MusicPackAdmin)
 admin.site.register(Pattern, PatternAdmin)
 admin.site.register(PatternHistory, PatternHistoryAdmin)
+admin.site.register(Vote, VoteAdmin)

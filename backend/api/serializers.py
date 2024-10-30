@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from api.models import Music, Dlc, MusicPack, Pattern, PatternHistory
+from api.models import Music, Dlc, MusicPack, Pattern, PatternHistory, Vote
 
 
 class MusicSerializer(serializers.ModelSerializer):
@@ -62,3 +62,9 @@ class PatternHistorySerializer(serializers.ModelSerializer):
   class Meta:
     model = PatternHistory
     fields = '__all__'
+
+
+class VoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Vote
+        fields = '__all__'
